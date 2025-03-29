@@ -1,0 +1,15 @@
+{
+  "Metadata": {
+    "title": "Czeglédi Levente",
+    "description": "Czeglédi Levente egy szoftvermérnök, aki magával ragadó digitális élményeket épít a webre és azon túl."
+  },
+  "NotFoundPage": {
+    "title": "404 - A keresett oldal nem található"
+  },
+  "ErrorPage": {
+    "title": "Valami hiba történt"
+  },
+  "HomePage": {
+    "underDevelopment": "Fejlesztés alatt"
+  }
+}

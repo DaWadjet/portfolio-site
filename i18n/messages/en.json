@@ -1,0 +1,15 @@
+{
+  "Metadata": {
+    "title": "Levente Czeglédi",
+    "description": "Levente Czeglédi is a software engineer who builds immersive digital experiences for the web and beyond."
+  },
+  "NotFoundPage": {
+    "title": "404 - Page Not Found"
+  },
+  "ErrorPage": {
+    "title": "Something went wrong"
+  },
+  "HomePage": {
+    "underDevelopment": "Under development"
+  }
+}
