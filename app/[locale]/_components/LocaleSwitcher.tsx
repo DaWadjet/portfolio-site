@@ -44,7 +44,7 @@ function LocaleSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           <span className="sr-only">{t("label")}</span>
-          <span className="font-semibold">
+          <span className="font-semibold text-xl">
             {t(`locale`, {
               locale,
             })}
