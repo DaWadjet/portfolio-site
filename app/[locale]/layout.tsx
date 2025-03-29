@@ -1,3 +1,6 @@
+import FixedHeightScrollArea from "@/app/[locale]/_components/FixedHeightScrollArea";
+import Navbar from "@/app/[locale]/_components/Navbar";
+import { ThemeProvider } from "@/app/[locale]/_components/ThemeProvider";
 import "@/app/globals.css";
 import { routing } from "@/i18n/routing";
 import { Locale, NextIntlClientProvider, hasLocale } from "next-intl";
@@ -17,11 +20,11 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Metadata" });
+  const t = await getTranslations({ locale });
 
   return {
-    title: t("title"),
-    description: t("description"),
+    title: t("Common.name"),
+    description: t("Metadata.description"),
   };
 }
 
@@ -41,9 +44,23 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
-      <body className={`${inter.className} antialiased`}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${inter.className} bg-background`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider>
+            <Navbar />
+            <FixedHeightScrollArea>
+              <main className="container mx-auto my-8 max-w-5xl grow px-4 pb-10">
+                {children}
+              </main>
+            </FixedHeightScrollArea>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
