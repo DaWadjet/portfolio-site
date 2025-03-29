@@ -1,6 +1,21 @@
 {
+  "Common": {
+    "name": "Czeglédi Levente"
+  },
+  "Navigation": {
+    "about": "Rólam",
+    "experience": "Tapasztalat",
+    "projects": "Projektek",
+    "contact": "Kapcsolat"
+  },
+  "Contact": {
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Önéletrajz"
+  },
+  "Footer": "Copyright © {year} Czeglédi Levente. Minden jog fenntartva.",
   "Metadata": {
-    "title": "Czeglédi Levente",
     "description": "Czeglédi Levente egy szoftvermérnök, aki magával ragadó digitális élményeket épít a webre és azon túl."
   },
   "NotFoundPage": {
@@ -14,6 +29,7 @@
   },
   "LocaleSwitcher": {
     "label": "Nyelv",
-    "locale": "{locale, select, hu {🇭🇺 Magyar} en {🇺🇸 English} other {Ismeretlen}}"
+    "locale": "{locale, select, hu {🇭🇺} en {🇺🇸} other {N/A}}",
+    "longLocale": "{locale, select, hu {🇭🇺 Magyar} en {🇺🇸 English} other {N/A}}"
   }
 }

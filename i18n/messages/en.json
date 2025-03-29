@@ -1,6 +1,21 @@
 {
+  "Common": {
+    "name": "Levente Czeglédi"
+  },
+  "Navigation": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "Contact": {
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Resume"
+  },
+  "Footer": "Copyright © {year} Levente Czeglédi. All rights reserved.",
   "Metadata": {
-    "title": "Levente Czeglédi",
     "description": "Levente Czeglédi is a software engineer who builds immersive digital experiences for the web and beyond."
   },
   "NotFoundPage": {
@@ -14,6 +29,7 @@
   },
   "LocaleSwitcher": {
     "label": "Language",
-    "locale": "{locale, select, hu {🇭🇺 Magyar} en {🇺🇸 English} other {Unknown}}"
+    "locale": "{locale, select, hu {🇭🇺} en {🇺🇸} other {N/A}}",
+    "longLocale": "{locale, select, hu {🇭🇺 Magyar} en {🇺🇸 English} other {N/A}}"
   }
 }
