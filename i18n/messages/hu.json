@@ -11,5 +11,9 @@
   },
   "HomePage": {
     "underDevelopment": "Fejlesztés alatt"
+  },
+  "LocaleSwitcher": {
+    "label": "Nyelv",
+    "locale": "{locale, select, hu {🇭🇺 Magyar} en {🇺🇸 English} other {Ismeretlen}}"
   }
 }
