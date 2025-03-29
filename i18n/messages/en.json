@@ -11,5 +11,9 @@
   },
   "HomePage": {
     "underDevelopment": "Under development"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "locale": "{locale, select, hu {🇭🇺 Magyar} en {🇺🇸 English} other {Unknown}}"
   }
 }
