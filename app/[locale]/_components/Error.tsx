@@ -3,15 +3,15 @@
 import { useTranslations } from "next-intl";
 
 export default function Error() {
-//TODO: add proper error handling instead of a stub
-//         {
-//   error,
-//   reset,
-// }: {
-//   error: Error & { digest?: string };
-//   reset: () => void;
-// }
-  const t = useTranslations("Error");
+  //TODO: add proper error handling instead of a stub
+  //         {
+  //   error,
+  //   reset,
+  // }: {
+  //   error: Error & { digest?: string };
+  //   reset: () => void;
+  // }
+  const t = useTranslations("ErrorPage");
 
   return (
     <div>
