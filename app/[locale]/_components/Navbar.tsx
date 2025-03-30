@@ -1,83 +1,84 @@
 "use client";
 import DarkModeToggle from "@/app/[locale]/_components/DarkModeToggle";
 import LocaleSwitcher from "@/app/[locale]/_components/LocaleSwitcher";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-import { FC } from "react";
-import { useMedia } from "react-use";
+import { FC, RefObject } from "react";
 
-const sections = ["about", "experience", "projects", "contact"] as const;
-
-const HomeLink: FC = () => {
-  const name = useTranslations("Common")("name");
-  return (
-    <Link
-      data-test="navbar-logo"
-      href="/"
-      className="flex gap-1 items-center hover:text-muted-foreground transition-colors duration-200"
-    >
-      <h1 className="font-semibold tracking-tight leading-none text-xl">
-        {name}
-      </h1>
-    </Link>
-  );
-};
-
-const Navbar: FC = () => {
+const Navbar: FC<{
+  sections: ReadonlyArray<{
+    name: "about" | "experience" | "projects" | "contact";
+    ref: RefObject<HTMLElement | null>;
+  }>;
+}> = ({ sections }) => {
   const t = useTranslations();
-  const isMobileView = useMedia("(max-width: 768px)");
 
   return (
     <nav
       role="navigation"
-      className={cn(
-        "sticky top-0 z-20 flex gap-6 items-center border-b bg-background",
-        isMobileView ? "h-28 px-4" : "h-16 px-6"
-      )}
+      className="flex items-center h-24 px-4 md:h-16 md:px-6"
     >
-      {isMobileView ? (
-        <div className="flex flex-col gap-5 justify-center w-full">
-          <div className="flex justify-between items-center">
-            <HomeLink />
-            <div className="flex gap-3 items-center">
-              <DarkModeToggle />
-              <LocaleSwitcher />
-            </div>
-          </div>
-          <div className="flex gap-4 items-center justify-around">
-            {sections.map((section) => (
-              <Link
-                href={`#${section}`}
-                className="text-foreground text-base hover:text-muted-foreground transition-colors duration-200"
-                key={section}
-              >
-                {t(`Navigation.${section}`)}
-              </Link>
-            ))}
+      {/* Mobile view */}
+      <div className="flex flex-col gap-2 justify-center w-full md:hidden">
+        <div className="flex justify-between items-center">
+          <HomeLink />
+          <div className="flex gap-0.5 items-center -mr-2.5">
+            <DarkModeToggle />
+            <LocaleSwitcher />
           </div>
         </div>
-      ) : (
-        <>
-          <HomeLink />
-          <div className="flex gap-6 items-center ml-auto">
-            {sections.map((section) => (
-              <Link
-                href={`#${section}`}
-                className="text-foreground hover:text-muted-foreground transition-colors duration-200"
-                key={section}
-              >
-                {t(`Navigation.${section}`)}
-              </Link>
-            ))}
-            <div className="flex gap-3 items-center pl-4">
-              <DarkModeToggle />
-              <LocaleSwitcher />
-            </div>
+        <div className="flex items-center justify-between w-full">
+          {sections.map((section) => (
+            <Button
+              variant="link"
+              onClick={() => {
+                section.ref.current?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              className="hover:text-muted-foreground text-sm sm:text-base px-2"
+              key={section.name}
+            >
+              {t(`Navigation.${section.name}`)}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop view */}
+      <div className="hidden md:flex gap-6 justify-between w-full">
+        <HomeLink />
+        <div className="flex gap-2 items-center ml-auto">
+          {sections.map((section) => (
+            <Button
+              variant="link"
+              onClick={() => {
+                section.ref.current?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              className="text-foreground hover:text-muted-foreground text-base pt-2.5"
+              key={section.name}
+            >
+              {t(`Navigation.${section.name}`)}
+            </Button>
+          ))}
+          <div className="flex gap-3 items-center">
+            <DarkModeToggle />
+            <LocaleSwitcher />
           </div>
-        </>
-      )}
+        </div>
+      </div>
     </nav>
+  );
+};
+
+const HomeLink: FC = () => {
+  const name = useTranslations("Common")("name");
+  return (
+    <h1 className="font-semibold flex items-center justify-center tracking-tight leading-none md:text-xl text-lg">
+      {name}
+    </h1>
   );
 };
 
