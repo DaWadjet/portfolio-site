@@ -1,5 +1,3 @@
-import FixedHeightScrollArea from "@/app/[locale]/_components/FixedHeightScrollArea";
-import Navbar from "@/app/[locale]/_components/Navbar";
 import { ThemeProvider } from "@/app/[locale]/_components/ThemeProvider";
 import "@/app/globals.css";
 import { routing } from "@/i18n/routing";
@@ -45,21 +43,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${inter.className} bg-background`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextIntlClientProvider>
-            <Navbar />
-            <FixedHeightScrollArea>
-              <main className="container mx-auto my-8 max-w-5xl grow px-4 pb-10">
-                {children}
-              </main>
-            </FixedHeightScrollArea>
-          </NextIntlClientProvider>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

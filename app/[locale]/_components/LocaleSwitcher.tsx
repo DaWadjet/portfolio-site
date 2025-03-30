@@ -1,4 +1,5 @@
 "use client";
+import { getHash } from "@/app/_utils";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,13 +12,6 @@ import { routing } from "@/i18n/routing";
 import { Locale, useLocale, useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { useTransition } from "react";
-
-const getHash = () =>
-  typeof window !== "undefined"
-    ? window.location.hash
-      ? decodeURIComponent(window.location.hash)
-      : ""
-    : undefined;
 
 function LocaleSwitcher() {
   const t = useTranslations("LocaleSwitcher");
@@ -42,7 +36,7 @@ function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="ghost" className="size-11">
           <span className="sr-only">{t("label")}</span>
           <span className="font-semibold text-xl">
             {t(`locale`, {
@@ -51,10 +45,11 @@ function LocaleSwitcher() {
           </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[120px] min-w-[120px]">
+      <DropdownMenuContent align="end" className="w-[122px] min-w-[122px]">
         {routing.locales.map((loc) => (
           <DropdownMenuCheckboxItem
             key={loc}
+            className="whitespace-nowrap"
             checked={loc === locale}
             disabled={isPending}
             onClick={() => onSelectChange(loc)}

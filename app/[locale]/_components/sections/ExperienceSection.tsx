@@ -1,8 +1,11 @@
-import { FC } from "react";
+import { FC, RefObject } from "react";
 
-const ExperienceSection: FC = () => {
+const ExperienceSection: FC<{ ref: RefObject<HTMLElement | null> }> = ({
+  ref,
+}) => {
   return (
     <section
+      ref={ref}
       id="experience"
       className="h-screen bg-red-200 flex items-center justify-center"
     >
