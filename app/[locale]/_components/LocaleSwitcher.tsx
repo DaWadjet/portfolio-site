@@ -1,5 +1,4 @@
 "use client";
-import { getHash } from "@/app/_utils";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,26 +9,19 @@ import {
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Locale, useLocale, useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
 import { useTransition } from "react";
 
 function LocaleSwitcher() {
   const t = useTranslations("LocaleSwitcher");
   const locale = useLocale();
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
-  const params = useParams();
+
+  const [isPending, startTransition] = useTransition();
 
   function onSelectChange(newLocale: Locale) {
     startTransition(() => {
-      router.replace(
-        // @ts-expect-error -- TypeScript will validate that only known `params`
-        // are used in combination with a given `pathname`. Since the two will
-        // always match for the current route, we can skip runtime checks.
-        { pathname: pathname + getHash(), params },
-        { locale: newLocale }
-      );
+      router.replace({ pathname }, { locale: newLocale });
     });
   }
 
