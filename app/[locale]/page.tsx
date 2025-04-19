@@ -1,5 +1,6 @@
 "use client";
 
+import IconLinks from "@/app/[locale]/_components/IconLinks";
 import Navbar from "@/app/[locale]/_components/Navbar";
 import AboutSection from "@/app/[locale]/_components/sections/AboutSection";
 import ContactSection from "@/app/[locale]/_components/sections/ContactSection";
@@ -31,7 +32,7 @@ export default function Home() {
     <>
       <Navbar sections={sections} />
       <ScrollArea className="overflow-y-auto">
-        <main className="container mx-auto my-8 max-w-5xl grow px-4 pb-10">
+        <main className="container mx-auto my-8 max-w-5xl grow px-4 lg:px-16 pb-10">
           <div className="flex flex-col items-stretch gap-8 w-full">
             <div className="h-screen flex items-center justify-center w-full text-4xl font-bold">
               {t("HomePage.underDevelopment")}
@@ -43,6 +44,7 @@ export default function Home() {
           </div>
         </main>
       </ScrollArea>
+      <IconLinks />
     </>
   );
 }
