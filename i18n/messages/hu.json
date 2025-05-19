@@ -2,6 +2,10 @@
   "Common": {
     "name": "Czeglédi Levente"
   },
+  "Introduction": {
+    "title": "Czeglédi Levente",
+    "description": "Frontend Software Engineer @Hiya"
+  },
   "Navigation": {
     "about": "Rólam",
     "experience": "Tapasztalat",

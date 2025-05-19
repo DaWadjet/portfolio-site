@@ -12,10 +12,7 @@ const IconLinks: FC = () => {
       <Link href="https://github.com/DaWadjet" target="_blank">
         <Github />
       </Link>
-      <Link
-        href="https://www.linkedin.com/in/czegl%C3%A9di-levente-3a5155230"
-        target="_blank"
-      >
+      <Link href="https://www.linkedin.com/in/levente-czegledi" target="_blank">
         <Linkedin />
       </Link>
       <Link href="mailto:celevicte@gmail.com">

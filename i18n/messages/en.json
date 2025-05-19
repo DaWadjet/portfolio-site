@@ -2,6 +2,10 @@
   "Common": {
     "name": "Levente Czeglédi"
   },
+  "Introduction": {
+    "title": "Hello, I'm Levente,",
+    "description": "a Hungarian software engineer planning to relocate to Copenhagen, Denmark. Passionate about building scalable web and mobile applications with React, Next.js, and Flutter but on the lookout to expand my skills in full-stack and backend development. Always curious about the latest in web technology."
+  },
   "Navigation": {
     "about": "About",
     "experience": "Experience",

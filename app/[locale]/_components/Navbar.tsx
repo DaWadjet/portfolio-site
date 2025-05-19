@@ -13,6 +13,8 @@ const Navbar: FC<{
 }> = ({ sections }) => {
   const t = useTranslations();
 
+  const shouldShowNextPhase = !process.env.NEXT_PUBLIC_HIDE_NEXT_PHASE;
+
   return (
     <nav
       role="navigation"
@@ -27,42 +29,45 @@ const Navbar: FC<{
             <LocaleSwitcher />
           </div>
         </div>
-        <div className="flex items-center justify-between w-full">
-          {sections.map((section) => (
-            <Button
-              variant="link"
-              onClick={() => {
-                section.ref.current?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-              className="hover:text-muted-foreground text-sm sm:text-base px-2"
-              key={section.name}
-            >
-              {t(`Navigation.${section.name}`)}
-            </Button>
-          ))}
-        </div>
+        {shouldShowNextPhase && (
+          <div className="flex items-center justify-between w-full">
+            {sections.map((section) => (
+              <Button
+                variant="link"
+                onClick={() => {
+                  section.ref.current?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+                className="hover:text-muted-foreground text-sm sm:text-base px-2"
+                key={section.name}
+              >
+                {t(`Navigation.${section.name}`)}
+              </Button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Desktop view */}
       <div className="hidden md:flex gap-6 justify-between w-full">
         <HomeLink />
         <div className="flex gap-2 items-center ml-auto">
-          {sections.map((section) => (
-            <Button
-              variant="link"
-              onClick={() => {
-                section.ref.current?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-              className="text-foreground hover:text-muted-foreground text-base pt-2.5"
-              key={section.name}
-            >
-              {t(`Navigation.${section.name}`)}
-            </Button>
-          ))}
+          {shouldShowNextPhase &&
+            sections.map((section) => (
+              <Button
+                variant="link"
+                onClick={() => {
+                  section.ref.current?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+                className="text-foreground hover:text-muted-foreground text-base pt-2.5"
+                key={section.name}
+              >
+                {t(`Navigation.${section.name}`)}
+              </Button>
+            ))}
           <div className="flex gap-3 items-center">
             <DarkModeToggle />
             <LocaleSwitcher />
